@@ -1,0 +1,1350 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Data Science and Intelligence Conference Deadlines</title>
+    <meta name="description" content="Countdowns to DSAIL conference deadlines.">
+    <meta name="author" content="ncvxopt">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1689046561" media="screen,projection">
+    <link rel="shortcut icon" href="/conf/static/img/favicon.png">
+    <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
+    <script src="/conf/static/js/moment.min.js"></script>
+    <script src="/conf/static/js/moment-timezone-with-data.min.js"></script>
+    <script src="/conf/static/js/store.min.js"></script>
+    <script src="/conf/static/js/ouical.min.js"></script>
+
+  </head>
+  <body>
+    <div class="top-strip"></div>
+    <div class="container">
+        <div class="page-header" id="conf-title">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                  <h1>
+                    <a id="conf-title-href" nohref></a>
+                    <span id="twitter-box"></span>
+                  </h1>
+                </div>
+                <div class="meta deadline col-xs-12">
+                  <span id="conf-date"></span>. <span id="conf-place"></span>.<br>
+                </div>
+                <div class="meta deadline col-xs-12 col-md-5">
+                  Deadline in timezone from conference website:
+                </div>
+                <div class="meta deadline col-xs-12 col-md-6">
+                  <span class="deadline-time"></span>
+                </div>
+                <span class="local-timezone-hide">
+                  <div class="meta deadline col-xs-12 col-md-5">
+                    Deadline in your local <span class="local-timezone">America/New_York</span> timezone:
+                  </div>
+                  <div class="meta deadline col-xs-12 col-md-6">
+                    <span class="deadline-local-time"></span>
+                  </div>
+                </span>
+                <div class="meta deadline col-xs-2 col-sm-1 col-md-5">
+                  Website:
+                </div>
+                <div class="meta deadline col-xs-10 col-sm-11 col-md-7">
+                  <a id="conf-website" target="_blank" nohref></a><br>
+                </div>
+            </div>
+        </div>
+        <div>
+          <div class="row">
+              <div class="col-xs-12">
+                <span id="conf-timer"></span>
+                <br>
+              </div>
+          </div>
+          <br>
+          <hr>
+        </div>
+        <footer>
+          <a href="/">https://www.ncvxopt.com</a> is maintained by <a href="https://zipingzhao.com/">ncvxopt</a>.<br>
+        </footer>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+    $(function() {
+        var url = new URL(window.location);
+        var conf = url.searchParams.get('id');
+        console.log(conf);
+
+        // Borrowed from https://github.com/moment/moment-timezone/issues/167
+        // Adds support for time zones 'UTC-12'..'UTC+12'
+        function addUtcTimeZones() {
+          // Moment.js uses the IANA timezone database, which supports generic time zones like 'Etc/GMT+1'.
+          // However, the signs for these time zones are inverted compared to ISO 8601.
+          // For more details, see https://github.com/moment/moment-timezone/issues/167
+          for (let offset = -12; offset <= 12; offset++) {
+            const posixSign = offset <= 0 ? '+' : '-';
+            const isoSign = offset >= 0 ? '+' : '-';
+            const link = `Etc/GMT${posixSign}${Math.abs(offset)}|UTC${isoSign}${Math.abs(offset)}`;
+            moment.tz.link(link);
+          }
+        }
+        addUtcTimeZones();
+        try {
+          var local_timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          $('.local-timezone').text(local_timezone.toString());
+        }
+        catch(err) {
+          $('.local-timezone-hide').hide();
+        }
+
+        
+            if (conf == "alt2023") {
+              $('#conf-title-href').text("ALT 2023");
+              $('#conf-title-href').attr('href', "/conference?id=alt2023");
+              $('#conf-date').text("Feb 20- 23, 2023");
+              $('#conf-place').text("Paris, France");
+              $('#conf-website').text("http://algorithmiclearningtheory.org/alt2023/");
+              $('#conf-website').attr('href', "http://algorithmiclearningtheory.org/alt2023/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ALT2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-05" ;
+                var confDate = moment.tz("2022-10-05 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "cikm23") {
+              $('#conf-title-href').text("CIKM 2023");
+              $('#conf-title-href').attr('href', "/conference?id=cikm23");
+              $('#conf-date').text("October 21-25, 2023");
+              $('#conf-place').text("Birmingham, UK");
+              $('#conf-website').text("https://cikm2023.github.io/");
+              $('#conf-website').attr('href', "https://cikm2023.github.io/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #CIKM2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-06-02 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "icde23") {
+              $('#conf-title-href').text("ICDE 2023");
+              $('#conf-title-href').attr('href', "/conference?id=icde23");
+              $('#conf-date').text("April 3-7, 2023");
+              $('#conf-place').text("Anaheim, California, USA");
+              $('#conf-website').text("https://icde2023.ics.uci.edu/");
+              $('#conf-website').attr('href', "https://icde2023.ics.uci.edu/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ICDE2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2022-10-08 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "acml23") {
+              $('#conf-title-href').text("ACML 2023");
+              $('#conf-title-href').attr('href', "/conference?id=acml23");
+              $('#conf-date').text("November 11-14, 2023");
+              $('#conf-place').text("Istanbul, Turkey");
+              $('#conf-website').text("https://www.acml-conf.org/2023/");
+              $('#conf-website').attr('href', "https://www.acml-conf.org/2023/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ACML2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-7" ;
+                var confDate = moment.tz("2023-06-23 23:59:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ijcnn23") {
+              $('#conf-title-href').text("IJCNN 2023");
+              $('#conf-title-href').attr('href', "/conference?id=ijcnn23");
+              $('#conf-date').text("June 18-23, 2023");
+              $('#conf-place').text("Queensland, Australia");
+              $('#conf-website').text("https://2023.ijcnn.org/");
+              $('#conf-website').attr('href', "https://2023.ijcnn.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IJCNN2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-7" ;
+                var confDate = moment.tz("2023-01-31 23:59:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "wsdm24") {
+              $('#conf-title-href').text("WSDM 2024");
+              $('#conf-title-href').attr('href', "/conference?id=wsdm24");
+              $('#conf-date').text("March 4-8, 2024");
+              $('#conf-place').text("Singapore");
+              $('#conf-website').text("https://www.wsdm-conference.org/2023/");
+              $('#conf-website').attr('href', "https://www.wsdm-conference.org/2023/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #WSDM2024 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-08-12 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "eusipco23") {
+              $('#conf-title-href').text("EUSIPCO 2023");
+              $('#conf-title-href').attr('href', "/conference?id=eusipco23");
+              $('#conf-date').text("September 4-8, 2023");
+              $('#conf-place').text("Helsinki, Finland");
+              $('#conf-website').text("http://eusipco2023.org/");
+              $('#conf-website').attr('href', "http://eusipco2023.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #EUSIPCO2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-03-10 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "gsp23") {
+              $('#conf-title-href').text("GSP 2023");
+              $('#conf-title-href').attr('href', "/conference?id=gsp23");
+              $('#conf-date').text("June 12-14, 2023");
+              $('#conf-place').text("Oxford, UK");
+              $('#conf-website').text("https://gspworkshop.org/");
+              $('#conf-website').attr('href', "https://gspworkshop.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #GSP2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-03-10 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "spawc23") {
+              $('#conf-title-href').text("IEEE SPAWC 2023");
+              $('#conf-title-href').attr('href', "/conference?id=spawc23");
+              $('#conf-date').text("September 25-28, 2023");
+              $('#conf-place').text("Shanghai");
+              $('#conf-website').text("http://2023spawc.aconf.org/index.html");
+              $('#conf-website').attr('href', "http://2023spawc.aconf.org/index.html");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IEEE SPAWC2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-04-16 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "mlsp23") {
+              $('#conf-title-href').text("IEEE MLSP 2023");
+              $('#conf-title-href').attr('href', "/conference?id=mlsp23");
+              $('#conf-date').text("September 17‐20, 2023");
+              $('#conf-place').text("Rome, Italy");
+              $('#conf-website').text("https://2023.ieeemlsp.org/");
+              $('#conf-website').attr('href', "https://2023.ieeemlsp.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IEEE MLSP2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-04-28 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ieeessp23") {
+              $('#conf-title-href').text("IEEE SSP 2023");
+              $('#conf-title-href').attr('href', "/conference?id=ieeessp23");
+              $('#conf-date').text("July 2-5, 2023");
+              $('#conf-place').text("Hanoi, Vietnam");
+              $('#conf-website').text("https://avitech.uet.vnu.edu.vn/ssp2023/index.html");
+              $('#conf-website').attr('href', "https://avitech.uet.vnu.edu.vn/ssp2023/index.html");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IEEE SSP2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-01-18 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ieeesam22") {
+              $('#conf-title-href').text("IEEE SAM 2022");
+              $('#conf-title-href').attr('href', "/conference?id=ieeesam22");
+              $('#conf-date').text("June 20-23, 2022");
+              $('#conf-place').text("NTNU, Norway");
+              $('#conf-website').text("https://attend.ieee.org/sam-2022/");
+              $('#conf-website').attr('href', "https://attend.ieee.org/sam-2022/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IEEE SAM2022 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2022-02-02 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ieeecamsap23") {
+              $('#conf-title-href').text("IEEE CAMSAP 2023");
+              $('#conf-title-href').attr('href', "/conference?id=ieeecamsap23");
+              $('#conf-date').text("December 10-13, 2023");
+              $('#conf-place').text("Costa Rica");
+              $('#conf-website').text("https://camsap23.ig.umons.ac.be/index.php");
+              $('#conf-website').attr('href', "https://camsap23.ig.umons.ac.be/index.php");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IEEE CAMSAP2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-05-01 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "asilomar23") {
+              $('#conf-title-href').text("Asilomar 2023");
+              $('#conf-title-href').attr('href', "/conference?id=asilomar23");
+              $('#conf-date').text("October 19 - November 01, 2023");
+              $('#conf-place').text("Pacific Grove, CA, USA");
+              $('#conf-website').text("https://www.asilomarsscconf.org/");
+              $('#conf-website').attr('href', "https://www.asilomarsscconf.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #Asilomar2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-05-01 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ieeeisit23") {
+              $('#conf-title-href').text("IEEE ISIT 2023");
+              $('#conf-title-href').attr('href', "/conference?id=ieeeisit23");
+              $('#conf-date').text("June 25-30, 2023");
+              $('#conf-place').text("Taipei, Taiwan");
+              $('#conf-website').text("https://www.isit2023.org/");
+              $('#conf-website').attr('href', "https://www.isit2023.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IEEE ISIT2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-01-03 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ciss24") {
+              $('#conf-title-href').text("CISS 2024");
+              $('#conf-title-href').attr('href', "/conference?id=ciss24");
+              $('#conf-date').text("March 13-15, 2024");
+              $('#conf-place').text("Princeton");
+              $('#conf-website').text("https://ee-ciss.princeton.edu/");
+              $('#conf-website').attr('href', "https://ee-ciss.princeton.edu/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #CISS2024 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-12-01 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ita23") {
+              $('#conf-title-href').text("ITA 2023");
+              $('#conf-title-href').attr('href', "/conference?id=ita23");
+              $('#conf-date').text("February 7–12, 2023");
+              $('#conf-place').text("Pacific Beach, San Diego");
+              $('#conf-website').text("https://ita.ucsd.edu/workshop/");
+              $('#conf-website').attr('href', "https://ita.ucsd.edu/workshop/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ITA2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-01-01 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ieeeitw23") {
+              $('#conf-title-href').text("IEEE ITW 2023");
+              $('#conf-title-href').attr('href', "/conference?id=ieeeitw23");
+              $('#conf-date').text("April 23-28, 2023");
+              $('#conf-place').text("Saint-Malo");
+              $('#conf-website').text("https://itw2023.org/");
+              $('#conf-website').attr('href', "https://itw2023.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IEEE ITW2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2022-12-18 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "allerton23") {
+              $('#conf-title-href').text("ALLERTON 2023");
+              $('#conf-title-href').attr('href', "/conference?id=allerton23");
+              $('#conf-date').text("September 26-29, 2023");
+              $('#conf-place').text("University of Illinois at Urbana-Champaign, United States");
+              $('#conf-website').text("https://allerton.csl.illinois.edu/");
+              $('#conf-website').attr('href', "https://allerton.csl.illinois.edu/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ALLERTON2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-8" ;
+                var confDate = moment.tz("2023-03-06 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "aaai24") {
+              $('#conf-title-href').text("AAAI 2024");
+              $('#conf-title-href').attr('href', "/conference?id=aaai24");
+              $('#conf-date').text("February 7-14, 2024");
+              $('#conf-place').text("Washington, DC, USA");
+              $('#conf-website').text("https://aaai-23.aaai.org/");
+              $('#conf-website').attr('href', "https://aaai-23.aaai.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #AAAI2024 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-08-15 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "icaps23") {
+              $('#conf-title-href').text("ICAPS 2023");
+              $('#conf-title-href').attr('href', "/conference?id=icaps23");
+              $('#conf-date').text("July 8-13, 2023");
+              $('#conf-place').text("Prague, Czech Republic");
+              $('#conf-website').text("https://icaps23.icaps-conference.org/home/");
+              $('#conf-website').attr('href', "https://icaps23.icaps-conference.org/home/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ICAPS2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2022-12-30 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "chil23") {
+              $('#conf-title-href').text("CHIL 2023");
+              $('#conf-title-href').attr('href', "/conference?id=chil23");
+              $('#conf-date').text("April 8-10, 2023");
+              $('#conf-place').text("Online");
+              $('#conf-website').text("https://www.chilconference.org/");
+              $('#conf-website').attr('href', "https://www.chilconference.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #CHIL2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-02-15 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "sigir23") {
+              $('#conf-title-href').text("SIGIR 2023");
+              $('#conf-title-href').attr('href', "/conference?id=sigir23");
+              $('#conf-date').text("July 23-27, 2023");
+              $('#conf-place').text("Taiwan");
+              $('#conf-website').text("https://sigir.org/sigir2023/");
+              $('#conf-website').attr('href', "https://sigir.org/sigir2023/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #SIGIR2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-01-28 23:59:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "aamas23") {
+              $('#conf-title-href').text("AAMAS 2023");
+              $('#conf-title-href').attr('href', "/conference?id=aamas23");
+              $('#conf-date').text("May 29 - June 2, 2023");
+              $('#conf-place').text("London");
+              $('#conf-website').text("https://aamas2023.soton.ac.uk/");
+              $('#conf-website').attr('href', "https://aamas2023.soton.ac.uk/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #AAMAS2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2022-10-08 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "icpr23") {
+              $('#conf-title-href').text("ICPR 2023");
+              $('#conf-title-href').attr('href', "/conference?id=icpr23");
+              $('#conf-date').text("June 4-7, 2023");
+              $('#conf-place').text("Ghent, Belgium");
+              $('#conf-website').text("https://icpr2022.be/");
+              $('#conf-website').attr('href', "https://icpr2022.be/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ICPR2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC+1" ;
+                var confDate = moment.tz("2022-12-10 23:59:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "iclr23") {
+              $('#conf-title-href').text("ICLR 2023");
+              $('#conf-title-href').attr('href', "/conference?id=iclr23");
+              $('#conf-date').text("May 1-5, 2023");
+              $('#conf-place').text("Kigali, Rwanda, Africa");
+              $('#conf-website').text("http://iclr.cc/");
+              $('#conf-website').attr('href', "http://iclr.cc/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ICLR2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-7" ;
+                var confDate = moment.tz("2022-09-28 07:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "aistats23") {
+              $('#conf-title-href').text("AISTATS 2023");
+              $('#conf-title-href').attr('href', "/conference?id=aistats23");
+              $('#conf-date').text("April 25 - 27,, 2023");
+              $('#conf-place').text("Valencia, Spain");
+              $('#conf-website').text("http://aistats.org/aistats2023/");
+              $('#conf-website').attr('href', "http://aistats.org/aistats2023/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #AISTATS2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "America/Los_Angeles" ;
+                var confDate = moment.tz("2022-10-15 08:00:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "icassp24") {
+              $('#conf-title-href').text("IEEE ICASSP 2024");
+              $('#conf-title-href').attr('href', "/conference?id=icassp24");
+              $('#conf-date').text("April 14 - 19, 2024");
+              $('#conf-place').text("Seoul, Korea");
+              $('#conf-website').text("https://2024.ieeeicassp.org/");
+              $('#conf-website').attr('href', "https://2024.ieeeicassp.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IEEE ICASSP2024 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-09-06 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "www23") {
+              $('#conf-title-href').text("WWW 2023");
+              $('#conf-title-href').attr('href', "/conference?id=www23");
+              $('#conf-date').text("MAY 1-5, 2023");
+              $('#conf-place').text("AUSTIN, TEXAS, USA");
+              $('#conf-website').text("https://www2023.thewebconf.org/");
+              $('#conf-website').attr('href', "https://www2023.thewebconf.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #WWW2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2022-10-13 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ijcai23") {
+              $('#conf-title-href').text("IJCAI 2023");
+              $('#conf-title-href').attr('href', "/conference?id=ijcai23");
+              $('#conf-date').text("August 19-25, 2023");
+              $('#conf-place').text("Cape Town, South Africa");
+              $('#conf-website').text("https://ijcai-23.org/");
+              $('#conf-website').attr('href', "https://ijcai-23.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #IJCAI2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-01-18 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "colt23") {
+              $('#conf-title-href').text("COLT 2023");
+              $('#conf-title-href').attr('href', "/conference?id=colt23");
+              $('#conf-date').text("July 12-15, 2023");
+              $('#conf-place').text("Bangalore, India");
+              $('#conf-website').text("http://www.learningtheory.org/colt2023/");
+              $('#conf-website').attr('href', "http://www.learningtheory.org/colt2023/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #COLT2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "America/Los_Angeles" ;
+                var confDate = moment.tz("2023-02-10 16:00:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "icml23") {
+              $('#conf-title-href').text("ICML 2023");
+              $('#conf-title-href').attr('href', "/conference?id=icml23");
+              $('#conf-date').text("July 23-29, 2023");
+              $('#conf-place').text("Hawaii");
+              $('#conf-website').text("https://icml.cc/Conferences/2022");
+              $('#conf-website').attr('href', "https://icml.cc/Conferences/2022");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ICML2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-01-26 23:59:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "kdd23") {
+              $('#conf-title-href').text("SIGKDD/KDD 2023");
+              $('#conf-title-href').attr('href', "/conference?id=kdd23");
+              $('#conf-date').text("August 06-10, 2023");
+              $('#conf-place').text("Washington DC Convention Center");
+              $('#conf-website').text("https://kdd.org/kdd2023/");
+              $('#conf-website').attr('href', "https://kdd.org/kdd2023/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #SIGKDD/KDD2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-11" ;
+                var confDate = moment.tz("2023-02-02 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "icdm23") {
+              $('#conf-title-href').text("ICDM 2023");
+              $('#conf-title-href').attr('href', "/conference?id=icdm23");
+              $('#conf-date').text("December 1-4, 2023");
+              $('#conf-place').text("Shanghai, China");
+              $('#conf-website').text("http://www.cloud-conf.net/icdm2023/index.html");
+              $('#conf-website').attr('href', "http://www.cloud-conf.net/icdm2023/index.html");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ICDM2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-11" ;
+                var confDate = moment.tz("2023-07-01 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "sdm23") {
+              $('#conf-title-href').text("SDM 2023");
+              $('#conf-title-href').attr('href', "/conference?id=sdm23");
+              $('#conf-date').text("April 28 - 30, 2023");
+              $('#conf-place').text("Alexandria, Virginia, U.S.");
+              $('#conf-website').text("https://www.siam.org/conferences/cm/conference/sdm22");
+              $('#conf-website').attr('href', "https://www.siam.org/conferences/cm/conference/sdm22");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #SDM2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-11" ;
+                var confDate = moment.tz("2023-01-15 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "ecml2023") {
+              $('#conf-title-href').text("ECML PKDD 2023");
+              $('#conf-title-href').attr('href', "/conference?id=ecml2023");
+              $('#conf-date').text("September 19-23, 2023");
+              $('#conf-place').text("Grenoble, France");
+              $('#conf-website').text("https://2023.ecmlpkdd.org/");
+              $('#conf-website').attr('href', "https://2023.ecmlpkdd.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #ECML PKDD2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-04-02 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "uai2023") {
+              $('#conf-title-href').text("UAI 2023");
+              $('#conf-title-href').attr('href', "/conference?id=uai2023");
+              $('#conf-date').text("July 31 - August 4, 2023");
+              $('#conf-place').text("Pittsburgh, Pennsylvania, USA");
+              $('#conf-website').text("https://www.auai.org/uai2023/");
+              $('#conf-website').attr('href', "https://www.auai.org/uai2023/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #UAI2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2023-02-13 23:59:59", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "neurips23") {
+              $('#conf-title-href').text("NeurIPS 2023");
+              $('#conf-title-href').attr('href', "/conference?id=neurips23");
+              $('#conf-date').text("November 26 – December 4, 2023");
+              $('#conf-place').text("The New Orleans Convention Center");
+              $('#conf-website').text("https://nips.cc/Conferences/2023");
+              $('#conf-website').attr('href', "https://nips.cc/Conferences/2023");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #NeurIPS2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "America/Los_Angeles" ;
+                var confDate = moment.tz("2023-05-11 00:00:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "cpal24") {
+              $('#conf-title-href').text("CPAL 2024");
+              $('#conf-title-href').attr('href', "/conference?id=cpal24");
+              $('#conf-date').text("January 3 – January 6, 2024");
+              $('#conf-place').text("The University of Hong Kong");
+              $('#conf-website').text("https://cpal.cc/");
+              $('#conf-website').attr('href', "https://cpal.cc/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #CPAL2024 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-0" ;
+                var confDate = moment.tz("2023-08-28 00:00:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "WOLIT23") {
+              $('#conf-title-href').text("WOLIT 2023");
+              $('#conf-title-href').attr('href', "/conference?id=WOLIT23");
+              $('#conf-date').text("July 3 – July 5, 2023");
+              $('#conf-place').text("Shenzhen Institute for Talents Development");
+              $('#conf-website').text("http://idi-wolit.com/wolit23/");
+              $('#conf-website').attr('href', "http://idi-wolit.com/wolit23/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #WOLIT2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-0" ;
+                var confDate = moment.tz("2023-06-23 00:00:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+    });
+    // Google analytics
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>
