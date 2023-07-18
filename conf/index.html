@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to DSAIL conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1689685038" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1689685574" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -1641,7 +1641,7 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 9-13, 2023.</span>
+                  <span class="conf-date">September 9-13, 2024.</span>
                   <span class="conf-place">
                     
                     <a href="http://maps.google.com/?q=Grenoble, France">Grenoble, France</a>.
@@ -3710,106 +3710,16 @@
         $('#sdm24 .DM-tag').html(sub2name["DM"].toLocaleLowerCase());
         
         
-          // adjust date according to deadline timezone
-          var timezone = "UTC-11" ;
-          var confDate = moment.tz("2023-01-15 23:59:59", timezone);
-
-          // render countdown timer
-          $('#sdm24 .timer').countdown(confDate.toDate(), function(event) {
-            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-          });
-
-          // convert deadline to local timezone
-          try {
-            var localConfDate = moment.tz(confDate, local_timezone);
-            $('#sdm24 .deadline-time').html(localConfDate.toString());
-          }
-          catch(err) {
-            console.log("Error converting to local timezone.");
-          }
-
-          // add calendar button
-          var myCalendar = createCalendar({
-            options: {
-              class: 'calendar-obj',
-
-              // You can pass an ID. If you don't, one will be generated for you
-              id: 'sdm24'
-            },
-            data: {
-              // Event title
-              title: 'SDM 2024 deadline',
-
-              // Event start date
-              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
-
-              // Event duration
-              duration: 60,
-            }
-          });
-          document.querySelector('#sdm24 .calendar').appendChild(myCalendar);
-
-          // check if date has passed, add 'past' class to it
-          var today = moment();
-          diff = today.diff(confDate)
-          $('#sdm24').attr("diff", diff)
-          if (diff > 0) {
-            $('#sdm24').addClass('past');
-            $('#sdm24').appendTo($("#past_confs"))
-          }
+          $('#sdm24 .timer').html("TBA");
+          $('#sdm24 .deadline-time').html("TBA");
         
         
         
         $('#ecml2024 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
         
         
-          // adjust date according to deadline timezone
-          var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-04-02 23:59:59", timezone);
-
-          // render countdown timer
-          $('#ecml2024 .timer').countdown(confDate.toDate(), function(event) {
-            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-          });
-
-          // convert deadline to local timezone
-          try {
-            var localConfDate = moment.tz(confDate, local_timezone);
-            $('#ecml2024 .deadline-time').html(localConfDate.toString());
-          }
-          catch(err) {
-            console.log("Error converting to local timezone.");
-          }
-
-          // add calendar button
-          var myCalendar = createCalendar({
-            options: {
-              class: 'calendar-obj',
-
-              // You can pass an ID. If you don't, one will be generated for you
-              id: 'ecml2024'
-            },
-            data: {
-              // Event title
-              title: 'ECML PKDD 2024 deadline',
-
-              // Event start date
-              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
-
-              // Event duration
-              duration: 60,
-            }
-          });
-          document.querySelector('#ecml2024 .calendar').appendChild(myCalendar);
-
-          // check if date has passed, add 'past' class to it
-          var today = moment();
-          diff = today.diff(confDate)
-          $('#ecml2024').attr("diff", diff)
-          if (diff > 0) {
-            $('#ecml2024').addClass('past');
-            $('#ecml2024').appendTo($("#past_confs"))
-          }
+          $('#ecml2024 .timer').html("TBA");
+          $('#ecml2024 .deadline-time').html("TBA");
         
         
         
