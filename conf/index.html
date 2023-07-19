@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to Data, Signal, and Information processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1689736915" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1689737115" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -33,7 +33,7 @@
                   </h1>
                 </div>
                 <div class="meta col-xs-12">
-                  Countdowns to Data, Signal, and Information processing related conference deadlines. This is created by <a href="https://zipingzhao.github.io">Ziping Zhao</a>'s research group at ShanghaiTech. This page is currently maintained as a fork from <a href="https://aideadlin.es/">aideadlin.es</a>.
+                  Countdowns to Data, Signal, and Information processing related conference deadlines. This is created by <a href="https://zipingzhao.com">Ziping Zhao</a>'s research group at ShanghaiTech. This page is currently maintained as a fork from <a href="https://aideadlin.es/">aideadlin.es</a>.
                 </div>
             </div>
             <br>
@@ -54,23 +54,7 @@
                       <div class="col-md-4 col-xs-6">
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox" id="SP-checkbox" class=""> Signal Processing
-                          </label>
-                        </div>
-                      </div>
-                      
-                      <div class="col-md-4 col-xs-6">
-                        <div class="checkbox">
-                          <label>
                             <input type="checkbox" id="LT-checkbox" class=""> Learning Theory
-                          </label>
-                        </div>
-                      </div>
-                      
-                      <div class="col-md-4 col-xs-6">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" id="IT-checkbox" class=""> Information Theory
                           </label>
                         </div>
                       </div>
@@ -86,7 +70,39 @@
                       <div class="col-md-4 col-xs-6">
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox" id="OPT-checkbox" class=""> Optimization
+                            <input type="checkbox" id="SP-checkbox" class=""> Signal Processing
+                          </label>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-4 col-xs-6">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" id="IT-checkbox" class=""> Information Theory
+                          </label>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-4 col-xs-6">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" id="OPT-checkbox" class=""> Computation & Optimization
+                          </label>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-4 col-xs-6">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" id="MLSP-checkbox" class=""> Machine Learning & Signal Processing
+                          </label>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-4 col-xs-6">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" id="LTIT-checkbox" class=""> Learning Theory & Information Theory
                           </label>
                         </div>
                       </div>
@@ -1761,7 +1777,7 @@
             <hr>
           </div>
           
-          <div id="cpal24" class="ConfItem  ML-conf ">
+          <div id="cpal24" class="ConfItem  MLSP-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
                     <a class="conf-title" href="https://cpal.cc/" target="_blank">CPAL 2024</a>
@@ -1798,14 +1814,14 @@
             <div class="row">
               <div class="col-xs-12">
                 
-                <span title="Click to only show ML conferences" data-sub="ML" class="conf-sub ML-tag"></span>
+                <span title="Click to only show MLSP conferences" data-sub="MLSP" class="conf-sub MLSP-tag"></span>
                 
               </div>
             </div>
             <hr>
           </div>
           
-          <div id="WOLIT23" class="ConfItem  LT-conf ">
+          <div id="WOLIT23" class="ConfItem  LTIT-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
                     <a class="conf-title" href="http://idi-wolit.com/wolit23/" target="_blank">WOLIT 2023</a>
@@ -1842,7 +1858,7 @@
             <div class="row">
               <div class="col-xs-12">
                 
-                <span title="Click to only show LT conferences" data-sub="LT" class="conf-sub LT-tag"></span>
+                <span title="Click to only show LTIT conferences" data-sub="LTIT" class="conf-sub LTIT-tag"></span>
                 
               </div>
             </div>
@@ -1894,7 +1910,7 @@
 
 
         // Get all subs
-        var conf_type_data = [{"name":"Machine Learning","sub":"ML"},{"name":"Signal Processing","sub":"SP"},{"name":"Learning Theory","sub":"LT"},{"name":"Information Theory","sub":"IT"},{"name":"Data Mining","sub":"DM"},{"name":"Optimization","sub":"OPT"}];
+        var conf_type_data = [{"name":"Machine Learning","sub":"ML"},{"name":"Learning Theory","sub":"LT"},{"name":"Data Mining","sub":"DM"},{"name":"Signal Processing","sub":"SP"},{"name":"Information Theory","sub":"IT"},{"name":"Computation & Optimization","sub":"OPT"},{"name":"Machine Learning & Signal Processing","sub":"MLSP"},{"name":"Learning Theory & Information Theory","sub":"LTIT"}];
         var all_subs = [];
         var sub2name = {}; var name2sub = {};
         for (var i = 0; i < conf_type_data.length; i++) {
@@ -3784,7 +3800,7 @@
         
         
         
-        $('#cpal24 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
+        $('#cpal24 .MLSP-tag').html(sub2name["MLSP"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
@@ -3837,7 +3853,7 @@
         
         
         
-        $('#WOLIT23 .LT-tag').html(sub2name["LT"].toLocaleLowerCase());
+        $('#WOLIT23 .LTIT-tag').html(sub2name["LTIT"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
