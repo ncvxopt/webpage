@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1695520454" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1696159624" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -196,7 +196,7 @@
                   <span class="conf-date">October 21-25, 2023.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Birmingham, UK">Birmingham, UK</a>.
+                    <a href="http://maps.google.com/?q=Boise, Idaho, USA">Boise, Idaho, USA</a>.
                     
                   </span>
                 </div>
@@ -477,10 +477,10 @@
             <hr>
           </div>
           
-          <div id="spawc23" class="ConfItem  SP-conf ">
+          <div id="spawc24" class="ConfItem  SP-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="http://2023spawc.aconf.org/index.html" target="_blank">SPAWC 2023</a>
+                    <a class="conf-title" href="https://spawc2024.org/" target="_blank">SPAWC 2024</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -489,10 +489,10 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 25-28, 2023.</span>
+                  <span class="conf-date">September 10-13, 2024.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Shanghai">Shanghai</a>.
+                    <a href="http://maps.google.com/?q=Lucca, Italy">Lucca, Italy</a>.
                     
                   </span>
                 </div>
@@ -917,10 +917,10 @@
             <hr>
           </div>
           
-          <div id="ieeeitw23" class="ConfItem  IT-conf ">
+          <div id="ieeeitw24" class="ConfItem  IT-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="https://itw2023.org/" target="_blank">ITW 2023</a>
+                    <a class="conf-title" href="https://www.aconf.org/conf_194191.html" target="_blank">ITW 2024</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -929,10 +929,10 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">April 23-28, 2023.</span>
+                  <span class="conf-date">November 24 - 28, 2024.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Saint-Malo">Saint-Malo</a>.
+                    <a href="http://maps.google.com/?q=Shenzhen, China">Shenzhen, China</a>.
                     
                   </span>
                 </div>
@@ -1114,7 +1114,7 @@
                 </div>
                 
                 <div class="note">
-                  ddl TBD
+                  
                 </div>
                 
               </div>
@@ -1305,10 +1305,10 @@
             <hr>
           </div>
           
-          <div id="aistats23" class="ConfItem  ML-conf ">
+          <div id="aistats24" class="ConfItem  ML-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="http://aistats.org/aistats2023/" target="_blank">AISTATS 2023</a>
+                    <a class="conf-title" href="http://aistats.org/aistats2023/" target="_blank">AISTATS 2024</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -1317,7 +1317,7 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">April 25 - 27,, 2023.</span>
+                  <span class="conf-date">May 2 - 4, 2024.</span>
                   <span class="conf-place">
                     
                     <a href="http://maps.google.com/?q=Valencia, Spain">Valencia, Spain</a>.
@@ -2839,22 +2839,22 @@
         
         
         
-        $('#spawc23 .SP-tag').html(sub2name["SP"].toLocaleLowerCase());
+        $('#spawc24 .SP-tag').html(sub2name["SP"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
           var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-04-16 23:59:59", timezone);
+          var confDate = moment.tz("2024-04-11 23:59:59", timezone);
 
           // render countdown timer
-          $('#spawc23 .timer').countdown(confDate.toDate(), function(event) {
+          $('#spawc24 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#spawc23 .deadline-time').html(localConfDate.toString());
+            $('#spawc24 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -2866,11 +2866,11 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'spawc23'
+              id: 'spawc24'
             },
             data: {
               // Event title
-              title: 'SPAWC 2023 deadline',
+              title: 'SPAWC 2024 deadline',
 
               // Event start date
               start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
@@ -2879,15 +2879,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#spawc23 .calendar').appendChild(myCalendar);
+          document.querySelector('#spawc24 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#spawc23').attr("diff", diff)
+          $('#spawc24').attr("diff", diff)
           if (diff > 0) {
-            $('#spawc23').addClass('past');
-            $('#spawc23').appendTo($("#past_confs"))
+            $('#spawc24').addClass('past');
+            $('#spawc24').appendTo($("#past_confs"))
           }
         
         
@@ -3369,22 +3369,22 @@
         
         
         
-        $('#ieeeitw23 .IT-tag').html(sub2name["IT"].toLocaleLowerCase());
+        $('#ieeeitw24 .IT-tag').html(sub2name["IT"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
-          var timezone = "UTC-12" ;
-          var confDate = moment.tz("2022-12-18 23:59:59", timezone);
+          var timezone = "UTC+8" ;
+          var confDate = moment.tz("2024-04-26 23:59:59", timezone);
 
           // render countdown timer
-          $('#ieeeitw23 .timer').countdown(confDate.toDate(), function(event) {
+          $('#ieeeitw24 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#ieeeitw23 .deadline-time').html(localConfDate.toString());
+            $('#ieeeitw24 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -3396,11 +3396,11 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'ieeeitw23'
+              id: 'ieeeitw24'
             },
             data: {
               // Event title
-              title: 'ITW 2023 deadline',
+              title: 'ITW 2024 deadline',
 
               // Event start date
               start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
@@ -3409,15 +3409,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#ieeeitw23 .calendar').appendChild(myCalendar);
+          document.querySelector('#ieeeitw24 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#ieeeitw23').attr("diff", diff)
+          $('#ieeeitw24').attr("diff", diff)
           if (diff > 0) {
-            $('#ieeeitw23').addClass('past');
-            $('#ieeeitw23').appendTo($("#past_confs"))
+            $('#ieeeitw24').addClass('past');
+            $('#ieeeitw24').appendTo($("#past_confs"))
           }
         
         
@@ -3585,8 +3585,8 @@
         
         
           // adjust date according to deadline timezone
-          var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-02-15 23:59:59", timezone);
+          var timezone = "UTC-05" ;
+          var confDate = moment.tz("2024-02-05 23:59:59", timezone);
 
           // render countdown timer
           $('#chil24 .timer').countdown(confDate.toDate(), function(event) {
@@ -3846,22 +3846,22 @@
         
         
         
-        $('#aistats23 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
+        $('#aistats24 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
-          var timezone = "America/Los_Angeles" ;
-          var confDate = moment.tz("2022-10-15 08:00:00", timezone);
+          var timezone = "UTC-12" ;
+          var confDate = moment.tz("2023-10-13 00:00:00", timezone);
 
           // render countdown timer
-          $('#aistats23 .timer').countdown(confDate.toDate(), function(event) {
+          $('#aistats24 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#aistats23 .deadline-time').html(localConfDate.toString());
+            $('#aistats24 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -3873,11 +3873,11 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'aistats23'
+              id: 'aistats24'
             },
             data: {
               // Event title
-              title: 'AISTATS 2023 deadline',
+              title: 'AISTATS 2024 deadline',
 
               // Event start date
               start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
@@ -3886,15 +3886,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#aistats23 .calendar').appendChild(myCalendar);
+          document.querySelector('#aistats24 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#aistats23').attr("diff", diff)
+          $('#aistats24').attr("diff", diff)
           if (diff > 0) {
-            $('#aistats23').addClass('past');
-            $('#aistats23').appendTo($("#past_confs"))
+            $('#aistats24').addClass('past');
+            $('#aistats24').appendTo($("#past_confs"))
           }
         
         
@@ -4273,8 +4273,53 @@
         $('#sdm24 .OPT-tag').html(sub2name["OPT"].toLocaleLowerCase());
         
         
-          $('#sdm24 .timer').html("TBA");
-          $('#sdm24 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC-08" ;
+          var confDate = moment.tz("2023-10-06 23:59:59", timezone);
+
+          // render countdown timer
+          $('#sdm24 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#sdm24 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'sdm24'
+            },
+            data: {
+              // Event title
+              title: 'SIAM SDM 2024 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#sdm24 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#sdm24').attr("diff", diff)
+          if (diff > 0) {
+            $('#sdm24').addClass('past');
+            $('#sdm24').appendTo($("#past_confs"))
+          }
         
         
         
