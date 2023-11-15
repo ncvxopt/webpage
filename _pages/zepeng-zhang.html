@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>zepeng-zhang.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>Zepeng Zhang now is a PhD student at École Polytechnique Fédérale de Lausanne (EPFL). Previously, he received his master's degree at ShanghaiTech University and B.Eng. degree from Wuhan University (WHU). He also had the opportunity to visit Peking University (PKU) and City University of HongKong (CityU) as a research intern. His current research focuses on graph machine learning and algorithmic reasoning. To get more recent info about him: <a href="https://zepengzhang.com/">zepengzhang.com</a>.</p>
+<p>Zepeng's research in DSAI lab has been mainly dedicated to two fields, namely, an optimization perspective for understanding/designing graph neural networks and non-convex optimization for weighted sum-rate maximization problems in wireless communications.</p>
+<h3 id="optimization-induced-graph-neural-networks">optimization induced graph neural networks</h3>
+<ul>
+<li>
+<p><a href="https://arxiv.org/abs/2210.01002">ASGNN: Graph Neural Networks with Adaptive Structure</a><br/>
+<strong>Zepeng Zhang</strong>, Songtao Lu, Zengfeng Huang, and Ziping Zhao.</p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2206.04471">Towards Understanding Graph Neural Networks: An Algorithm Unrolling Perspective</a><br/>
+<strong>Zepeng Zhang</strong> and Ziping Zhao.<br/></p>
+<ul>
+<li>Short version: <a href="https://faculty.sist.shanghaitech.edu.cn/zhao/pubs/ZhangZhao-KDD22-DLG-UnrollingGNN.pdf">Designing Graph Neural Networks via Algorithm Unrolling</a><br/>
+<strong>Zepeng Zhang</strong> and Ziping Zhao, <em>International Workshop on Deep Learning on Graphs: Methods and Applications (SIGKDD-DLG)</em>, 2022. <br/></li>
+</ul>
+</li>
+</ul>
+<h3 id="optimization-for-weighted-sum-rate-maximization">optimization for weighted sum-rate maximization</h3>
+<ul>
+<li>
+<p><a href="https://arxiv.org/abs/2311.04546">Discerning and Enhancing the Weighted Sum-Rate Maximization Algorithms in Communications</a><br/>
+<strong>Zepeng Zhang</strong>, Ziping Zhao, Kaiming Shen, Daniel P. Palomar, and Wei Yu.<br/></p>
+<ul>
+<li>Short version: <a href="https://ieeexplore.ieee.org/abstract/document/10096377">Enhancing the Efficiency of WMMSE and FP for Beamforming by Minorization-Maximization</a><br/>
+<strong>Zepeng Zhang</strong>, Ziping Zhao, and Kaiming Shen, <em>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</em>, 2023.
+<br/> <br/></li>
+</ul>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2105.02395">Rate Maximizations for Reconfigurable Intelligent Surface-Aided Wireless Networks: A Unified Framework via Block Minorization-Maximization</a><br/>
+<strong>Zepeng Zhang</strong> and Ziping Zhao.<br/></p>
+<ul>
+<li>Short version: <a href="https://ieeexplore.ieee.org/abstract/document/9593114">Weighted Sum-Rate Maximization for Multi-Hop RIS-Aided Multi-User Communications: A Minorization-Maximization Approach</a><br/>
+<strong>Zepeng Zhang</strong> and Ziping Zhao, <em>IEEE International Workshop on Signal Processing Advances in Wireless Communications (SPAWC)</em>, 2021 (<strong>Best Student Paper Award Finalist</strong>). <br/> <br/></li>
+</ul>
+</li>
+</ul>
+<h3 id="others">others</h3>
+<ul>
+<li>
+<p><a href="https://ieeexplore.ieee.org/abstract/document/9616258">Vast Portfolio Selection With Submodular Norm Regularizations</a><br/>
+<strong>Zepeng Zhang</strong> and Ziping Zhao, <em>European Signal Processing Conference (EUSIPCO)</em>, 2021.</p>
+</li>
+<li>
+<p><a href="https://ieeexplore.ieee.org/abstract/document/9513742">Scalable Financial Index Tracking with Graph Neural Networks</a><br/>
+<strong>Zepeng Zhang</strong> and Ziping Zhao, <em>IEEE Statistical Signal Processing Workshop (SSP)</em>, 2021.</p>
+</li>
+<li>
+<p><a href="https://ieeexplore.ieee.org/abstract/document/9443423">A Deep Learning-Aided Approach to Portfolio Design for Financial Index Tracking</a><br/>
+<strong>Zepeng Zhang</strong> and Ziping Zhao, <em>Annual Asilomar Conference on Signals, Systems, and Computers (Asilomar)</em>, 2020.</p>
+</li>
+<li>
+<p><a href="https://ieeexplore.ieee.org/abstract/document/9723183">Multi-Period Portfolio Optimization for Index Tracking in Finance</a><br/>
+Xiuyuan Huang, <strong>Zepeng Zhang</strong>, and Ziping Zhao, <em>Annual Asilomar Conference on Signals, Systems, and Computers (Asilomar)</em>, 2020.</p>
+</li>
+</ul>
+
+</body>
+</html>
