@@ -444,6 +444,10 @@ footer.sticky-bottom {
   color: var(--global-theme-color);
 }
 
+ul > li {
+  margin-bottom: 1em;
+}
+
 .pagination .page-item .page-link {
   color: var(--global-text-color);
 }
