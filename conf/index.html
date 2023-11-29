@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1701253015" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1701253503" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -1005,10 +1005,10 @@
             <hr>
           </div>
           
-          <div id="aaai24" class="ConfItem  oth-conf ">
+          <div id="aaai25" class="ConfItem  oth-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="https://aaai-23.aaai.org/" target="_blank">AAAI 2024</a>
+                    <a class="conf-title" href="https://aaai.org/conference/aaai-25/" target="_blank">AAAI 2025</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -1017,16 +1017,16 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">February 7-14, 2024.</span>
+                  <span class="conf-date">February, 2025.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Washington, DC, USA">Washington, DC, USA</a>.
+                    <a href="http://maps.google.com/?q=PHILADELPHIA, PA, USA">PHILADELPHIA, PA, USA</a>.
                     
                   </span>
                 </div>
                 
                 <div class="note">
-                  August 8, 2023: Abstracts due
+                  
                 </div>
                 
               </div>
@@ -3695,56 +3695,11 @@
         
         
         
-        $('#aaai24 .oth-tag').html(sub2name["oth"].toLocaleLowerCase());
+        $('#aaai25 .oth-tag').html(sub2name["oth"].toLocaleLowerCase());
         
         
-          // adjust date according to deadline timezone
-          var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-08-15 23:59:59", timezone);
-
-          // render countdown timer
-          $('#aaai24 .timer').countdown(confDate.toDate(), function(event) {
-            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-          });
-
-          // convert deadline to local timezone
-          try {
-            var localConfDate = moment.tz(confDate, local_timezone);
-            $('#aaai24 .deadline-time').html(localConfDate.toString());
-          }
-          catch(err) {
-            console.log("Error converting to local timezone.");
-          }
-
-          // add calendar button
-          var myCalendar = createCalendar({
-            options: {
-              class: 'calendar-obj',
-
-              // You can pass an ID. If you don't, one will be generated for you
-              id: 'aaai24'
-            },
-            data: {
-              // Event title
-              title: 'AAAI 2024 deadline',
-
-              // Event start date
-              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
-
-              // Event duration
-              duration: 60,
-            }
-          });
-          document.querySelector('#aaai24 .calendar').appendChild(myCalendar);
-
-          // check if date has passed, add 'past' class to it
-          var today = moment();
-          diff = today.diff(confDate)
-          $('#aaai24').attr("diff", diff)
-          if (diff > 0) {
-            $('#aaai24').addClass('past');
-            $('#aaai24').appendTo($("#past_confs"))
-          }
+          $('#aaai25 .timer').html("TBA");
+          $('#aaai25 .deadline-time').html("TBA");
         
         
         
