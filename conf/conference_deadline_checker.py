@@ -2,7 +2,7 @@ import yaml
 import datetime
 
 # 解析YAML文件
-with open('/Users/gaochenyu/Documents/code/html/conf/_data/conferences.yml', 'r') as f:
+with open('./_data/conferences.yml', 'rb') as f:
     confs = yaml.safe_load(f)
 
 # 获取当前日期
