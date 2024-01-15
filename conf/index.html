@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1703403700" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1705289874" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -521,10 +521,10 @@
             <hr>
           </div>
           
-          <div id="mlsp23" class="ConfItem  SP-conf ">
+          <div id="mlsp24" class="ConfItem  SP-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="https://2023.ieeemlsp.org/" target="_blank">MLSP 2023</a>
+                    <a class="conf-title" href="https://2024.ieeemlsp.org/" target="_blank">MLSP 2024</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -533,10 +533,10 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 17‐20, 2023.</span>
+                  <span class="conf-date">September 22-25, 2024.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Rome, Italy">Rome, Italy</a>.
+                    <a href="http://maps.google.com/?q=London, UK">London, UK</a>.
                     
                   </span>
                 </div>
@@ -3112,22 +3112,22 @@
         
         
         
-        $('#mlsp23 .SP-tag').html(sub2name["SP"].toLocaleLowerCase());
+        $('#mlsp24 .SP-tag').html(sub2name["SP"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
           var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-04-28 23:59:59", timezone);
+          var confDate = moment.tz("2024-04-30 23:59:59", timezone);
 
           // render countdown timer
-          $('#mlsp23 .timer').countdown(confDate.toDate(), function(event) {
+          $('#mlsp24 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#mlsp23 .deadline-time').html(localConfDate.toString());
+            $('#mlsp24 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -3139,11 +3139,11 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'mlsp23'
+              id: 'mlsp24'
             },
             data: {
               // Event title
-              title: 'MLSP 2023 deadline',
+              title: 'MLSP 2024 deadline',
 
               // Event start date
               start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
@@ -3152,15 +3152,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#mlsp23 .calendar').appendChild(myCalendar);
+          document.querySelector('#mlsp24 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#mlsp23').attr("diff", diff)
+          $('#mlsp24').attr("diff", diff)
           if (diff > 0) {
-            $('#mlsp23').addClass('past');
-            $('#mlsp23').appendTo($("#past_confs"))
+            $('#mlsp24').addClass('past');
+            $('#mlsp24').appendTo($("#past_confs"))
           }
         
         
@@ -4138,8 +4138,53 @@
         $('#ijcai24 .oth-tag').html(sub2name["oth"].toLocaleLowerCase());
         
         
-          $('#ijcai24 .timer').html("TBA");
-          $('#ijcai24 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC-12" ;
+          var confDate = moment.tz("2024-01-17 23:59:59", timezone);
+
+          // render countdown timer
+          $('#ijcai24 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#ijcai24 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'ijcai24'
+            },
+            data: {
+              // Event title
+              title: 'IJCAI 2024 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#ijcai24 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#ijcai24').attr("diff", diff)
+          if (diff > 0) {
+            $('#ijcai24').addClass('past');
+            $('#ijcai24').appendTo($("#past_confs"))
+          }
         
         
         
