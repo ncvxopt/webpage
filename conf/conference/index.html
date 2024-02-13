@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1705291251" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1707836416" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -128,34 +128,19 @@
               
             }
         
-            if (conf == "cikm23") {
+            if (conf == "cikm24") {
               $('#conf-title-href').text("CIKM 2023");
-              $('#conf-title-href').attr('href', "https://cikm2023.github.io/");
-              $('#conf-date').text("October 21-25, 2023");
-              $('#conf-place').text("Boise, Idaho, USA");
-              $('#conf-website').text("https://cikm2023.github.io/");
-              $('#conf-website').attr('href', "https://cikm2023.github.io/");
+              $('#conf-title-href').attr('href', "https://www.cikm2024.org/");
+              $('#conf-date').text("October 21-25, 2024");
+              $('#conf-place').text("Boise Centre, Boise, Idaho, USA");
+              $('#conf-website').text("https://www.cikm2024.org/");
+              $('#conf-website').attr('href', "https://www.cikm2024.org/");
               var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #CIKM2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
               $('#twitter-box').html(twitter_slug);
               
-                // adjust date according to deadline timezone
-                var timezone = "UTC-12" ;
-                var confDate = moment.tz("2023-06-02 23:59:59", timezone);
-
-                // render countdown timer
-                $('#conf-timer').countdown(confDate.toDate(), function(event) {
-                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-                });
-                $('.deadline-time').html(confDate.toString());
-
-                // convert deadline to local timezone
-                try {
-                  var localConfDate = moment.tz(confDate, local_timezone);
-                  $('.deadline-local-time').html(localConfDate.toString());
-                }
-                catch(err) {
-                  console.log("Error converting to local timezone.");
-                }
+                $('#conf-timer').html("TBA");
+                $('.deadline-time').html("TBA");
+                $('.deadline-local-time').html("TBA");
               
             }
         
@@ -1679,19 +1664,19 @@
               
             }
         
-            if (conf == "apsipaasc23") {
-              $('#conf-title-href').text("APSIPA ASC 2023");
-              $('#conf-title-href').attr('href', "https://www.apsipa2023.org/cfp.html");
-              $('#conf-date').text("October 31-November 3, 2023");
-              $('#conf-place').text("Taipei, Taiwan");
-              $('#conf-website').text("https://www.apsipa2023.org/cfp.html");
-              $('#conf-website').attr('href', "https://www.apsipa2023.org/cfp.html");
-              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #APSIPA ASC2023 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+            if (conf == "apsipaasc24") {
+              $('#conf-title-href').text("APSIPA ASC 2024");
+              $('#conf-title-href').attr('href', "http://www.apsipa2024.org/");
+              $('#conf-date').text("December 3-6, 2024");
+              $('#conf-place').text("Macao, China");
+              $('#conf-website').text("http://www.apsipa2024.org/");
+              $('#conf-website').attr('href', "http://www.apsipa2024.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #APSIPA ASC2024 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
               $('#twitter-box').html(twitter_slug);
               
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
-                var confDate = moment.tz("2023-06-21 23:59:59", timezone);
+                var confDate = moment.tz("2024-07-21 23:59:59", timezone);
 
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
