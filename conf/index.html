@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1713705978" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1713929919" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -873,10 +873,10 @@
             <hr>
           </div>
           
-          <div id="ita23" class="ConfItem  IT-conf ">
+          <div id="ita24" class="ConfItem  IT-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="https://ita.ucsd.edu/workshop/" target="_blank">ITA 2023</a>
+                    <a class="conf-title" href="http://www.ita2024.com/" target="_blank">ITA 2024</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -885,10 +885,10 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">February 7–12, 2023.</span>
+                  <span class="conf-date">August 16-18, 2024.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Pacific Beach, San Diego">Pacific Beach, San Diego</a>.
+                    <a href="http://maps.google.com/?q=Wuhan, China">Wuhan, China</a>.
                     
                   </span>
                 </div>
@@ -3536,22 +3536,22 @@
         
         
         
-        $('#ita23 .IT-tag').html(sub2name["IT"].toLocaleLowerCase());
+        $('#ita24 .IT-tag').html(sub2name["IT"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
           var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-01-01 23:59:59", timezone);
+          var confDate = moment.tz("2024-05-17 23:59:59", timezone);
 
           // render countdown timer
-          $('#ita23 .timer').countdown(confDate.toDate(), function(event) {
+          $('#ita24 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#ita23 .deadline-time').html(localConfDate.toString());
+            $('#ita24 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -3563,11 +3563,11 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'ita23'
+              id: 'ita24'
             },
             data: {
               // Event title
-              title: 'ITA 2023 deadline',
+              title: 'ITA 2024 deadline',
 
               // Event start date
               start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
@@ -3576,15 +3576,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#ita23 .calendar').appendChild(myCalendar);
+          document.querySelector('#ita24 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#ita23').attr("diff", diff)
+          $('#ita24').attr("diff", diff)
           if (diff > 0) {
-            $('#ita23').addClass('past');
-            $('#ita23').appendTo($("#past_confs"))
+            $('#ita24').addClass('past');
+            $('#ita24').appendTo($("#past_confs"))
           }
         
         
