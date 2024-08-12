@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1721381022" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1723447532" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -2571,6 +2571,50 @@
               <div class="col-xs-12">
                 
                 <span title="Click to only show oth conferences" data-sub="oth" class="conf-sub oth-tag"></span>
+                
+              </div>
+            </div>
+            <hr>
+          </div>
+          
+          <div id="rlc24" class="ConfItem  ML-conf ">
+            <div class="row conf-row">
+                <div class="col-xs-5 col-sm-6">
+                    <a class="conf-title" href="https://rl-conference.cc/" target="_blank">RLC 2024</a>
+                </div>
+                <div class="col-xs-7 col-sm-6">
+                  <span class="timer"></span>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">August 9-12, 2024.</span>
+                  <span class="conf-place">
+                    
+                    <a href="http://maps.google.com/?q=Amherst, MA">Amherst, MA</a>.
+                    
+                  </span>
+                </div>
+                
+                <div class="note">
+                  
+                </div>
+                
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="deadline">
+                  <div>Deadline:
+                    <span class="deadline-time"></span>
+                  </div>
+                </div>
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                
+                <span title="Click to only show ML conferences" data-sub="ML" class="conf-sub ML-tag"></span>
                 
               </div>
             </div>
@@ -5554,6 +5598,59 @@
           if (diff > 0) {
             $('#icaif24').addClass('past');
             $('#icaif24').appendTo($("#past_confs"))
+          }
+        
+        
+        
+        $('#rlc24 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
+        
+        
+          // adjust date according to deadline timezone
+          var timezone = "UTC-12" ;
+          var confDate = moment.tz("2023-03-08 00:00:00", timezone);
+
+          // render countdown timer
+          $('#rlc24 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#rlc24 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'rlc24'
+            },
+            data: {
+              // Event title
+              title: 'RLC 2024 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#rlc24 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#rlc24').attr("diff", diff)
+          if (diff > 0) {
+            $('#rlc24').addClass('past');
+            $('#rlc24').appendTo($("#past_confs"))
           }
         
         
