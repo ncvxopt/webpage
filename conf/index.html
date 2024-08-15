@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1723447532" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1723688150" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -1305,10 +1305,10 @@
             <hr>
           </div>
           
-          <div id="aistats24" class="ConfItem  ML-conf ">
+          <div id="aistats25" class="ConfItem  ML-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="http://aistats.org/aistats2023/" target="_blank">AISTATS 2024</a>
+                    <a class="conf-title" href="http://aistats.org/aistats2025/" target="_blank">AISTATS 2025</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -1317,10 +1317,10 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">May 2 - 4, 2024.</span>
+                  <span class="conf-date">May 3 - 5, 2025.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Valencia, Spain">Valencia, Spain</a>.
+                    <a href="http://maps.google.com/?q=Mai Khao, Thailand">Mai Khao, Thailand</a>.
                     
                   </span>
                 </div>
@@ -4065,22 +4065,22 @@
         
         
         
-        $('#aistats24 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
+        $('#aistats25 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
           var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-10-13 00:00:00", timezone);
+          var confDate = moment.tz("2024-10-10 00:00:00", timezone);
 
           // render countdown timer
-          $('#aistats24 .timer').countdown(confDate.toDate(), function(event) {
+          $('#aistats25 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#aistats24 .deadline-time').html(localConfDate.toString());
+            $('#aistats25 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -4092,11 +4092,11 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'aistats24'
+              id: 'aistats25'
             },
             data: {
               // Event title
-              title: 'AISTATS 2024 deadline',
+              title: 'AISTATS 2025 deadline',
 
               // Event start date
               start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
@@ -4105,15 +4105,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#aistats24 .calendar').appendChild(myCalendar);
+          document.querySelector('#aistats25 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#aistats24').attr("diff", diff)
+          $('#aistats25').attr("diff", diff)
           if (diff > 0) {
-            $('#aistats24').addClass('past');
-            $('#aistats24').appendTo($("#past_confs"))
+            $('#aistats25').addClass('past');
+            $('#aistats25').appendTo($("#past_confs"))
           }
         
         
