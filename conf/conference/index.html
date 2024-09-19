@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1724829733" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1726762618" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -1771,6 +1771,37 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2023-03-08 00:00:00", timezone);
+
+                // render countdown timer
+                $('#conf-timer').countdown(confDate.toDate(), function(event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+                $('.deadline-time').html(confDate.toString());
+
+                // convert deadline to local timezone
+                try {
+                  var localConfDate = moment.tz(confDate, local_timezone);
+                  $('.deadline-local-time').html(localConfDate.toString());
+                }
+                catch(err) {
+                  console.log("Error converting to local timezone.");
+                }
+              
+            }
+        
+            if (conf == "log24") {
+              $('#conf-title-href').text("LOG 2024");
+              $('#conf-title-href').attr('href', "https://logconference.org/");
+              $('#conf-date').text("November  26-29, 2024");
+              $('#conf-place').text("Virtual");
+              $('#conf-website').text("https://logconference.org/");
+              $('#conf-website').attr('href', "https://logconference.org/");
+              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #LOG2024 deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
+              $('#twitter-box').html(twitter_slug);
+              
+                // adjust date according to deadline timezone
+                var timezone = "UTC-12" ;
+                var confDate = moment.tz("2024-09-04 00:00:00", timezone);
 
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
