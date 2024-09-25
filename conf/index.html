@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1727262259" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1727263134" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -1049,10 +1049,10 @@
             <hr>
           </div>
           
-          <div id="icaps24" class="ConfItem  oth-conf ">
+          <div id="icaps25" class="ConfItem  oth-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="http://icaps24.icaps-conference.org/" target="_blank">ICAPS 2024</a>
+                    <a class="conf-title" href="https://icaps25.icaps-conference.org/" target="_blank">ICAPS 2025</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -1061,10 +1061,10 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">June 1-6, 2024.</span>
+                  <span class="conf-date">November 9-14, 2025.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Banff, Alberta, Canada">Banff, Alberta, Canada</a>.
+                    <a href="http://maps.google.com/?q=Melbourne, Victoria, Australia">Melbourne, Victoria, Australia</a>.
                     
                   </span>
                 </div>
@@ -1665,7 +1665,7 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">May 1–3 , 2025.</span>
+                  <span class="conf-date">May 1–3, 2025.</span>
                   <span class="conf-place">
                     
                     <a href="http://maps.google.com/?q=Alexandria Virginia, U.S.">Alexandria Virginia, U.S.</a>.
@@ -3567,8 +3567,53 @@
         $('#ciss25 .IT-tag').html(sub2name["IT"].toLocaleLowerCase());
         
         
-          $('#ciss25 .timer').html("TBA");
-          $('#ciss25 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC-12" ;
+          var confDate = moment.tz("2024-12-07 23:59:59", timezone);
+
+          // render countdown timer
+          $('#ciss25 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#ciss25 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'ciss25'
+            },
+            data: {
+              // Event title
+              title: 'CISS 2025 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#ciss25 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#ciss25').attr("diff", diff)
+          if (diff > 0) {
+            $('#ciss25').addClass('past');
+            $('#ciss25').appendTo($("#past_confs"))
+          }
         
         
         
@@ -3784,22 +3829,22 @@
         
         
         
-        $('#icaps24 .oth-tag').html(sub2name["oth"].toLocaleLowerCase());
+        $('#icaps25 .oth-tag').html(sub2name["oth"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
           var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-12-30 23:59:59", timezone);
+          var confDate = moment.tz("2024-11-01 23:59:59", timezone);
 
           // render countdown timer
-          $('#icaps24 .timer').countdown(confDate.toDate(), function(event) {
+          $('#icaps25 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#icaps24 .deadline-time').html(localConfDate.toString());
+            $('#icaps25 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -3811,11 +3856,11 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'icaps24'
+              id: 'icaps25'
             },
             data: {
               // Event title
-              title: 'ICAPS 2024 deadline',
+              title: 'ICAPS 2025 deadline',
 
               // Event start date
               start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
@@ -3824,15 +3869,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#icaps24 .calendar').appendChild(myCalendar);
+          document.querySelector('#icaps25 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#icaps24').attr("diff", diff)
+          $('#icaps25').attr("diff", diff)
           if (diff > 0) {
-            $('#icaps24').addClass('past');
-            $('#icaps24').appendTo($("#past_confs"))
+            $('#icaps25').addClass('past');
+            $('#icaps25').appendTo($("#past_confs"))
           }
         
         
@@ -4529,8 +4574,53 @@
         $('#sdm25 .OPT-tag').html(sub2name["OPT"].toLocaleLowerCase());
         
         
-          $('#sdm25 .timer').html("TBA");
-          $('#sdm25 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC-08" ;
+          var confDate = moment.tz("2024-10-04 23:59:59", timezone);
+
+          // render countdown timer
+          $('#sdm25 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#sdm25 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'sdm25'
+            },
+            data: {
+              // Event title
+              title: 'SIAM SDM 2025 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#sdm25 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#sdm25').attr("diff", diff)
+          if (diff > 0) {
+            $('#sdm25').addClass('past');
+            $('#sdm25').appendTo($("#past_confs"))
+          }
         
         
         
@@ -5287,8 +5377,53 @@
         $('#mlsys25 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
         
         
-          $('#mlsys25 .timer').html("TBA");
-          $('#mlsys25 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC+0" ;
+          var confDate = moment.tz("2024-11-01 03:59:59", timezone);
+
+          // render countdown timer
+          $('#mlsys25 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#mlsys25 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'mlsys25'
+            },
+            data: {
+              // Event title
+              title: 'MLSys 2025 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#mlsys25 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#mlsys25').attr("diff", diff)
+          if (diff > 0) {
+            $('#mlsys25').addClass('past');
+            $('#mlsys25').appendTo($("#past_confs"))
+          }
         
         
         
@@ -5509,7 +5644,7 @@
         
           // adjust date according to deadline timezone
           var timezone = "UTC-12" ;
-          var confDate = moment.tz("2023-03-08 00:00:00", timezone);
+          var confDate = moment.tz("2024-03-08 00:00:00", timezone);
 
           // render countdown timer
           $('#rlc24 .timer').countdown(confDate.toDate(), function(event) {
