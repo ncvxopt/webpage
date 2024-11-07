@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1730983322" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1730983980" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -2827,7 +2827,7 @@
             <hr>
           </div>
           
-          <div id="cvpr25" class="ConfItem  ML-conf ">
+          <div id="acl25" class="ConfItem  ML-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
                     <a class="conf-title" href="https://cvpr.thecvf.com/" target="_blank">ACL 2025</a>
@@ -6123,22 +6123,22 @@
         
         
         
-        $('#cvpr25 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
+        $('#acl25 .ML-tag').html(sub2name["ML"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
-          var timezone = "UTC+8" ;
-          var confDate = moment.tz("2025-02-15 01:59:00", timezone);
+          var timezone = "UTC-12" ;
+          var confDate = moment.tz("2025-02-15 23:59:00", timezone);
 
           // render countdown timer
-          $('#cvpr25 .timer').countdown(confDate.toDate(), function(event) {
+          $('#acl25 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#cvpr25 .deadline-time').html(localConfDate.toString());
+            $('#acl25 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -6150,7 +6150,7 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'cvpr25'
+              id: 'acl25'
             },
             data: {
               // Event title
@@ -6163,15 +6163,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#cvpr25 .calendar').appendChild(myCalendar);
+          document.querySelector('#acl25 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#cvpr25').attr("diff", diff)
+          $('#acl25').attr("diff", diff)
           if (diff > 0) {
-            $('#cvpr25').addClass('past');
-            $('#cvpr25').appendTo($("#past_confs"))
+            $('#acl25').addClass('past');
+            $('#acl25').appendTo($("#past_confs"))
           }
         
         
