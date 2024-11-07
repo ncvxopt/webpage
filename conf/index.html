@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1730983980" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1730984354" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -741,10 +741,10 @@
             <hr>
           </div>
           
-          <div id="ieeeisit24" class="ConfItem  IT-conf ">
+          <div id="ieeeisit25" class="ConfItem  IT-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="https://ieee-isit.org/home" target="_blank">ISIT 2024</a>
+                    <a class="conf-title" href="https://ieee-isit.org/home" target="_blank">ISIT 2025</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -756,7 +756,7 @@
                   <span class="conf-date">July 7-12, 2024.</span>
                   <span class="conf-place">
                     
-                    <a href="http://maps.google.com/?q=Athens, Greece">Athens, Greece</a>.
+                    <a href="http://maps.google.com/?q=Ann Arbor (Michigan), USA">Ann Arbor (Michigan), USA</a>.
                     
                   </span>
                 </div>
@@ -3626,7 +3626,7 @@
         
         
         
-        $('#ieeeisit24 .IT-tag').html(sub2name["IT"].toLocaleLowerCase());
+        $('#ieeeisit25 .IT-tag').html(sub2name["IT"].toLocaleLowerCase());
         
         
           // adjust date according to deadline timezone
@@ -3634,14 +3634,14 @@
           var confDate = moment.tz("2024-01-29 23:59:59", timezone);
 
           // render countdown timer
-          $('#ieeeisit24 .timer').countdown(confDate.toDate(), function(event) {
+          $('#ieeeisit25 .timer').countdown(confDate.toDate(), function(event) {
             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
           });
 
           // convert deadline to local timezone
           try {
             var localConfDate = moment.tz(confDate, local_timezone);
-            $('#ieeeisit24 .deadline-time').html(localConfDate.toString());
+            $('#ieeeisit25 .deadline-time').html(localConfDate.toString());
           }
           catch(err) {
             console.log("Error converting to local timezone.");
@@ -3653,11 +3653,11 @@
               class: 'calendar-obj',
 
               // You can pass an ID. If you don't, one will be generated for you
-              id: 'ieeeisit24'
+              id: 'ieeeisit25'
             },
             data: {
               // Event title
-              title: 'ISIT 2024 deadline',
+              title: 'ISIT 2025 deadline',
 
               // Event start date
               start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
@@ -3666,15 +3666,15 @@
               duration: 60,
             }
           });
-          document.querySelector('#ieeeisit24 .calendar').appendChild(myCalendar);
+          document.querySelector('#ieeeisit25 .calendar').appendChild(myCalendar);
 
           // check if date has passed, add 'past' class to it
           var today = moment();
           diff = today.diff(confDate)
-          $('#ieeeisit24').attr("diff", diff)
+          $('#ieeeisit25').attr("diff", diff)
           if (diff > 0) {
-            $('#ieeeisit24').addClass('past');
-            $('#ieeeisit24').appendTo($("#past_confs"))
+            $('#ieeeisit25').addClass('past');
+            $('#ieeeisit25').appendTo($("#past_confs"))
           }
         
         
