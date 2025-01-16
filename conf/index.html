@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1736609626" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1737038970" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -572,7 +572,7 @@
           <div id="ieeessp25" class="ConfItem  SP-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="TBA" target="_blank">SSP 2025</a>
+                    <a class="conf-title" href="https://2025.ieeessp.org/" target="_blank">SSP 2025</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -4230,8 +4230,53 @@
         $('#ieeessp25 .SP-tag').html(sub2name["SP"].toLocaleLowerCase());
         
         
-          $('#ieeessp25 .timer').html("TBA");
-          $('#ieeessp25 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC-12" ;
+          var confDate = moment.tz("2025-02-12 23:59:59", timezone);
+
+          // render countdown timer
+          $('#ieeessp25 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#ieeessp25 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'ieeessp25'
+            },
+            data: {
+              // Event title
+              title: 'SSP 2025 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#ieeessp25 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#ieeessp25').attr("diff", diff)
+          if (diff > 0) {
+            $('#ieeessp25').addClass('past');
+            $('#ieeessp25').appendTo($("#past_confs"))
+          }
         
         
         
