@@ -8,7 +8,7 @@
     <meta name="description" content="Countdowns to signal, information, and data processing related conference deadlines.">
     <meta name="author" content="ncvxopt">
     <link rel="stylesheet" type="text/css" href="/conf/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1737038970" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/conf/static/css/deadlines.css?t=1739678450" media="screen,projection">
     <link rel="shortcut icon" href="/conf/static/img/favicon.png">
     <script type="text/javascript" src="/conf/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/conf/static/js/jquery.countdown.min.js"></script>
@@ -2149,10 +2149,10 @@
             <hr>
           </div>
           
-          <div id="SIAMFM23" class="ConfItem  OPT-conf ">
+          <div id="SIAMFM25" class="ConfItem  OPT-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
-                    <a class="conf-title" href="https://www.siam.org/conferences-events/siam-conferences/fm25/" target="_blank">SIAM FM 2023</a>
+                    <a class="conf-title" href="https://www.siam.org/conferences-events/siam-conferences/fm25/" target="_blank">SIAM FM 2025</a>
                 </div>
                 <div class="col-xs-7 col-sm-6">
                   <span class="timer"></span>
@@ -3159,7 +3159,7 @@
             <hr>
           </div>
           
-          <div id="ecai25" class="ConfItem  oth-conf ">
+          <div id="ecai25ecai" class="ConfItem  oth-conf ">
             <div class="row conf-row">
                 <div class="col-xs-5 col-sm-6">
                     <a class="conf-title" href="https://ecai2025.org/" target="_blank">ECAI 2025</a>
@@ -6135,11 +6135,56 @@
         
         
         
-        $('#SIAMFM23 .OPT-tag').html(sub2name["OPT"].toLocaleLowerCase());
+        $('#SIAMFM25 .OPT-tag').html(sub2name["OPT"].toLocaleLowerCase());
         
         
-          $('#SIAMFM23 .timer').html("TBA");
-          $('#SIAMFM23 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC-4" ;
+          var confDate = moment.tz("2022-01-14 23:59:59", timezone);
+
+          // render countdown timer
+          $('#SIAMFM25 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#SIAMFM25 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'SIAMFM25'
+            },
+            data: {
+              // Event title
+              title: 'SIAM FM 2025 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#SIAMFM25 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#SIAMFM25').attr("diff", diff)
+          if (diff > 0) {
+            $('#SIAMFM25').addClass('past');
+            $('#SIAMFM25').appendTo($("#past_confs"))
+          }
         
         
         
@@ -7257,16 +7302,106 @@
         $('#iccv25 .oth-tag').html(sub2name["oth"].toLocaleLowerCase());
         
         
-          $('#iccv25 .timer').html("TBA");
-          $('#iccv25 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC-10" ;
+          var confDate = moment.tz("2024-03-07 23:59:59", timezone);
+
+          // render countdown timer
+          $('#iccv25 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#iccv25 .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'iccv25'
+            },
+            data: {
+              // Event title
+              title: 'ICCV 2025 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#iccv25 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#iccv25').attr("diff", diff)
+          if (diff > 0) {
+            $('#iccv25').addClass('past');
+            $('#iccv25').appendTo($("#past_confs"))
+          }
         
         
         
-        $('#ecai25 .oth-tag').html(sub2name["oth"].toLocaleLowerCase());
+        $('#ecai25ecai .oth-tag').html(sub2name["oth"].toLocaleLowerCase());
         
         
-          $('#ecai25 .timer').html("TBA");
-          $('#ecai25 .deadline-time').html("TBA");
+          // adjust date according to deadline timezone
+          var timezone = "UTC-12" ;
+          var confDate = moment.tz("2025-05-06 23:59:59", timezone);
+
+          // render countdown timer
+          $('#ecai25ecai .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+
+          // convert deadline to local timezone
+          try {
+            var localConfDate = moment.tz(confDate, local_timezone);
+            $('#ecai25ecai .deadline-time').html(localConfDate.toString());
+          }
+          catch(err) {
+            console.log("Error converting to local timezone.");
+          }
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'ecai25ecai'
+            },
+            data: {
+              // Event title
+              title: 'ECAI 2025 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#ecai25ecai .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          diff = today.diff(confDate)
+          $('#ecai25ecai').attr("diff", diff)
+          if (diff > 0) {
+            $('#ecai25ecai').addClass('past');
+            $('#ecai25ecai').appendTo($("#past_confs"))
+          }
         
         
         
